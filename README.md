@@ -1,5 +1,5 @@
 ---
-title: "Health Levels Based on Recipes"
+title: "health-levels-based-on-recipes"
 ---
 
 ###Introduction
