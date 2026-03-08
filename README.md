@@ -1,31 +1,31 @@
 
 
-###Introduction
+### Introduction
 
 ---
 
-###Data Cleaning and Exploratory Data Analysis
+### Data Cleaning and Exploratory Data Analysis
 
 ---
 
-###Assessment of Missingness
+### Assessment of Missingness
 
 ---
 
-###Hypothesis Testing
+### Hypothesis Testing
 
 ---
 
-###Framing a Prediction Problem
+### Framing a Prediction Problem
 
 ---
 
-###Baseline Model
+### Baseline Model
 
 ---
 
-###Final Model
+### Final Model
 
 ---
 
-###Fairness Analysis
+### Fairness Analysis
