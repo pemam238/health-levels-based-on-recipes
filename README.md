@@ -1,1 +1,1 @@
-title: "health levels based on recipes"
+#health-levels-based-on-recipes
