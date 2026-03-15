@@ -1,31 +1,35 @@
 
 
-### Introduction
+## Introduction
 
 ---
 
-### Data Cleaning and Exploratory Data Analysis
+## Data Cleaning and Exploratory Data Analysis
+
+### Interesting Aggregates
+ 
+int_agg1 = pd.read_csdv("data/processed/int_agg1.csv")
+print(int_agg1).to_markdown(index = False)
+---
+
+## Assessment of Missingness
 
 ---
 
-### Assessment of Missingness
+## Hypothesis Testing
 
 ---
 
-### Hypothesis Testing
+## Framing a Prediction Problem
 
 ---
 
-### Framing a Prediction Problem
+## Baseline Model
 
 ---
 
-### Baseline Model
+## Final Model
 
 ---
 
-### Final Model
-
----
-
-### Fairness Analysis
+## Fairness Analysis
