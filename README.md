@@ -8,8 +8,10 @@
 
 ### Interesting Aggregates
  
-int_agg1 = pd.read_csdv("data/processed/int_agg1.csv")
-print(int_agg1).to_markdown(index = False)
+import pandas as pd
+
+int_agg1 = pd.read_csv("data/processed/int_agg1.csv")
+print(int_agg1.to_markdown(index=False))
 ---
 
 ## Assessment of Missingness
