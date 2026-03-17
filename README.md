@@ -15,118 +15,15 @@ The columns most relevant to our question include minutes (minutes to prepare th
 Data Cleaning:
     The dataset was first merged on recipe id. All the 0.0's in the rating column were replaced with NaN so that when performing any aggregate functions, such as averages, including 0 would artificially deflate it. All the ratings per recipe were averaged so there is only one overall rating per recipe. The date recipes were submitted was converted to timestamps. Nan values found in the 'description' column were replaced with empty strings. Any calorie or minute values less than 0 were removed as well as calorie and minute counts in the top 1% for being unreasonable outliers. The protein, saturated fats, and sugar columns were isolated and turned into z-scores so that the health percentile can later be calculated. 
 
-| name                                 |   minutes |   n_steps |   n_ingredients |   average_rating |   calories |   total_fat_PDV |   sugar_PDV |   sodium_PDV |   protein_PDV |   saturated_fat_PDV |   carbs_PDV |   health_indicator | healthy_tag   |
-|:-------------------------------------|----------:|----------:|----------------:|-----------------:|-----------:|----------------:|------------:|-------------:|--------------:|--------------------:|------------:|-------------------:|:--------------|
-| 1 brownies in the world    best ever |        40 |        10 |               9 |                4 |      138.4 |              10 |          50 |            3 |             3 |                  19 |           6 |         -0.383264  | False         |
-| 1 in canada chocolate chip cookies   |        45 |        12 |              11 |                5 |      595.1 |              46 |         211 |           22 |            13 |                  51 |          26 |         -2.24926   | False         |
-| 412 broccoli casserole               |        40 |         6 |               9 |                5 |      194.8 |              20 |           6 |           32 |            22 |                  36 |           3 |          0.192644  | False         |
-| millionaire pound cake               |       120 |         7 |               7 |                5 |      878.3 |              63 |         326 |           13 |            20 |                 123 |          39 |         -4.61474   | False         |
-| 2000 meatloaf                        |        90 |        17 |              13 |                5 |      267   |              30 |          12 |           12 |            29 |                  48 |           2 |          0.0813278 | False    
+| name                                 |   min |   calories |   Total Fat PDV | ...   |   Carbs PDV |   Health Indicator |
+|:-------------------------------------|----------:|-----------:|----------------:|:------|------------:|-------------------:|
+| Brownies  |        40 |      138.4 |              10 | ...   |           6 |         -0.383  |
+| Chocolate Chip Cookies   |        45 |      595.1 |              46 | ...   |          26 |         -2.249   |
+| Broccoli Casserole               |        40 |      194.8 |              20 | ...   |           3 |          0.192  |
+| Millionaire Pound Cake               |       120 |      878.3 |              63 | ...   |          39 |         -4.614   |
+| Meatloaf                        |        90 |      267   |              30 | ...   |           2 |          0.081 |
 
-<div style="overflow-x:auto;">
-  <table style="font-size:12px; border-collapse:collapse; width:100%;">
-    <thead>
-      <tr>
-        <th style="padding:6px; border:1px solid #ccc;">name</th>
-        <th style="padding:6px; border:1px solid #ccc;">minutes</th>
-        <th style="padding:6px; border:1px solid #ccc;">n_steps</th>
-        <th style="padding:6px; border:1px solid #ccc;">n_ingredients</th>
-        <th style="padding:6px; border:1px solid #ccc;">average_rating</th>
-        <th style="padding:6px; border:1px solid #ccc;">calories</th>
-        <th style="padding:6px; border:1px solid #ccc;">total_fat_PDV</th>
-        <th style="padding:6px; border:1px solid #ccc;">sugar_PDV</th>
-        <th style="padding:6px; border:1px solid #ccc;">sodium_PDV</th>
-        <th style="padding:6px; border:1px solid #ccc;">protein_PDV</th>
-        <th style="padding:6px; border:1px solid #ccc;">saturated_fat_PDV</th>
-        <th style="padding:6px; border:1px solid #ccc;">carbs_PDV</th>
-        <th style="padding:6px; border:1px solid #ccc;">health_indicator</th>
-        <th style="padding:6px; border:1px solid #ccc;">healthy_tag</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:6px; border:1px solid #ccc;">1 brownies in the world best ever</td>
-        <td style="padding:6px; border:1px solid #ccc;">40</td>
-        <td style="padding:6px; border:1px solid #ccc;">10</td>
-        <td style="padding:6px; border:1px solid #ccc;">9</td>
-        <td style="padding:6px; border:1px solid #ccc;">4.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">138.4</td>
-        <td style="padding:6px; border:1px solid #ccc;">10.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">50.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">3.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">3.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">19.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">6.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">-0.383264</td>
-        <td style="padding:6px; border:1px solid #ccc;">False</td>
-      </tr>
-      <tr>
-        <td style="padding:6px; border:1px solid #ccc;">1 in canada chocolate chip cookies</td>
-        <td style="padding:6px; border:1px solid #ccc;">45</td>
-        <td style="padding:6px; border:1px solid #ccc;">12</td>
-        <td style="padding:6px; border:1px solid #ccc;">11</td>
-        <td style="padding:6px; border:1px solid #ccc;">5.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">595.1</td>
-        <td style="padding:6px; border:1px solid #ccc;">46.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">211.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">22.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">13.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">51.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">26.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">-2.249258</td>
-        <td style="padding:6px; border:1px solid #ccc;">False</td>
-      </tr>
-      <tr>
-        <td style="padding:6px; border:1px solid #ccc;">412 broccoli casserole</td>
-        <td style="padding:6px; border:1px solid #ccc;">40</td>
-        <td style="padding:6px; border:1px solid #ccc;">6</td>
-        <td style="padding:6px; border:1px solid #ccc;">9</td>
-        <td style="padding:6px; border:1px solid #ccc;">5.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">194.8</td>
-        <td style="padding:6px; border:1px solid #ccc;">20.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">6.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">32.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">22.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">36.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">3.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">0.192644</td>
-        <td style="padding:6px; border:1px solid #ccc;">False</td>
-      </tr>
-      <tr>
-        <td style="padding:6px; border:1px solid #ccc;">millionaire pound cake</td>
-        <td style="padding:6px; border:1px solid #ccc;">120</td>
-        <td style="padding:6px; border:1px solid #ccc;">7</td>
-        <td style="padding:6px; border:1px solid #ccc;">7</td>
-        <td style="padding:6px; border:1px solid #ccc;">5.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">878.3</td>
-        <td style="padding:6px; border:1px solid #ccc;">63.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">326.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">13.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">20.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">123.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">39.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">-4.614744</td>
-        <td style="padding:6px; border:1px solid #ccc;">False</td>
-      </tr>
-      <tr>
-        <td style="padding:6px; border:1px solid #ccc;">2000 meatloaf</td>
-        <td style="padding:6px; border:1px solid #ccc;">90</td>
-        <td style="padding:6px; border:1px solid #ccc;">17</td>
-        <td style="padding:6px; border:1px solid #ccc;">13</td>
-        <td style="padding:6px; border:1px solid #ccc;">5.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">267.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">30.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">12.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">12.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">29.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">48.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">2.0</td>
-        <td style="padding:6px; border:1px solid #ccc;">0.081328</td>
-        <td style="padding:6px; border:1px solid #ccc;">False</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
 
 Bivariate Analysis:
 
