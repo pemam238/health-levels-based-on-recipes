@@ -1,6 +1,5 @@
 
 # Health Tag Prediction
-
 ### Parisa Emam, Kate Alvarez
 
 ## Introduction
