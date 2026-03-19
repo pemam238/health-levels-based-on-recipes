@@ -30,14 +30,14 @@ Univariate Analysis:
   src="assets/calories_histogram.html"
   width="600"
   height="400"
-  frameborder="5"
+  frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/health_boxplot.html"
   width="600"
   height="400"
-  frameborder="5"
+  frameborder="0"
 ></iframe>
 
 
@@ -46,14 +46,14 @@ Bivariate Analysis:
   src="assets/StepsVSsugar.html"
   width="600"
   height="400"
-  frameborder="5"
+  frameborder="0"
 ></iframe>
 
 <iframe
   src="assets/StepsVSsatfat.html"
   width="600"
   height="400"
-  frameborder="5"
+  frameborder="0"
 ></iframe>
 
 
@@ -91,10 +91,10 @@ Continuing analyzing the missingness of the `”average_rating”` column, we in
 **Significance Level:** .05
 
 <iframe
-  src="assets/calories-ks-permuation.html"
+  src="assets/calories-ks-permutation.html"
   width="600"
   height="400"
-  frameborder="5"
+  frameborder="0"
 ></iframe>
 
 
@@ -112,10 +112,10 @@ Because the p-value is less than 0.05, we reject the null hypothesis. The distri
 **Significance Level:** .05
 
 <iframe
-  src="assets/sodium_PDV-ks-permuation.html"
+  src="assets/sodium_PDV-ks-permutation.html"
   width="600"
   height="400"
-  frameborder="5"
+  frameborder="0"
 ></iframe>
 
 **Observed KS statistic:**  0.0225
