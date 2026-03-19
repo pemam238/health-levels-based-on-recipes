@@ -92,6 +92,9 @@ Continuing analyzing the missingness of the `”average_rating”` column, we in
 
 <iframe
   src="assets/calories-ks-permuation.html"
+  width="800"
+  height="600"
+  frameborder="0"
 ></iframe>
 
 Because the p-value is less than 0.05, we reject the null hypothesis. The distribution of calories differs significantly depending on whether average_rating is missing. This indicates that the missingness of average_rating depends on calories, suggesting the missingness mechanism is Missing At Random 
@@ -134,6 +137,11 @@ Because the p-value is below our significance level, we reject the null hypothes
 ---
 
 ## Framing a Prediction Problem
+We aim to predict if the recipe was tagged `“healthy”`. This is a ** binary classification ** problem, which would predict ** False ** if there is no “healthy” tag in the tags and ** True **  if `“healthy”` does appear in the tags. We chose our response variable because it is easily interpretable, and doesn’t rely on us naming what is and what isn't healthy, but the perceived healthiness by the recipe makers. 
+
+To evaluate our model we chose to use the accuracy metric which is the proportion of correct predictions over total predictions. We chose to use this metric because we accounted for imbalance in our model building by using `class_weight = “balanced”`, and it is more straightforward than the other metrics and shows performance. 
+
+The features we used in our model was `“minutes”`,` “n_ingredients”`,` “calories”`, `“saturated_fat_PDV”`, `“protein_PDV”`, and `“sugar_PDV”` which are all known at the time of prediction because these features are all are properties the food contains (` “calories”`, `“saturated_fat_PDV”`, `“protein_PDV”`, `“sugar_PDV”`) or properties of the recipe (“minutes”,”n_ingredients”), which are known before any labeling or determination of the health level of the recipe. 
 
 ---
 
