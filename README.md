@@ -91,7 +91,7 @@ Continuing analyzing the missingness of the `”average_rating”` column, we in
 **Significance Level:** .05
 
 <iframe
-  src="assets/calories-ks-permutation.html"
+  src="assets/calories-ks-permutation-v2.html"
   width="600"
   height="400"
   frameborder="0"
@@ -112,7 +112,7 @@ Because the p-value is less than 0.05, we reject the null hypothesis. The distri
 **Significance Level:** .05
 
 <iframe
-  src="assets/sodium_PDV-ks-permutation.html"
+  src="assets/sodium_PDV-ks-permutation-v2.html"
   width="600"
   height="400"
   frameborder="0"
