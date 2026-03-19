@@ -144,6 +144,10 @@ The features we used in our model was `“minutes”`,` “n_ingredients”`,` �
 ---
 
 ## Baseline Model
+For our baseline model we are using a **logistic regression model**. We selected the `”calories”` and `”protein_PDV”` features for this model which are both continuous, quantitative features. Since both of the features are quantitative we did not need to encode. We split the data into training and test sets using an 80/20 split, where we use the test set to evaluate the model’s ability to generalize to unseen data. We instantiated the logistic regression model with  `class_weight = balanced`, because the number of recipes tagged `“healthy”` was low (around 20%). This parameter assigns higher weight to the minority class when training, so it helps prevent the model from only predicting the majority class and instead better learn the patterns associated with the minority class, which in our case are the recipes tagged `”healthy”`
+
+ Our resulting **train accuracy is 0.501** and the **test accuracy is 0.496**. We don’t believe our model is necessarily “good” as the resulting train and test accuracies are about the same as binary guessing, which would be around 0.5 accurate. The train and test accuracy are nearly identical which is good as it suggests that the model is not overfitting to the training set. Instead, our model is actually underfitting to the data, which points to our model being too simple. 
+
 
 ---
 
