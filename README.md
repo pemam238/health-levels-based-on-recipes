@@ -69,9 +69,6 @@ Continuing analyzing the missingness of the `”average_rating”` column, we in
 
 <iframe
   src="assets/calories-ks-permuation.html"
-  width="800"
-  height="600"
-  frameborder="0"
 ></iframe>
 
 Because the p-value is less than 0.05, we reject the null hypothesis. The distribution of calories differs significantly depending on whether average_rating is missing. This indicates that the missingness of average_rating depends on calories, suggesting the missingness mechanism is Missing At Random 
