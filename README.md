@@ -30,16 +30,24 @@ Univariate Analysis:
   src="assets/calories_histogram.html"
   width="600"
   height="400"
-  frameborder="10"
+  frameborder="5"
 ></iframe>
 
 <iframe
   src="assets/health_boxplot.html"
   width="600"
   height="400"
-  frameborder="10"
+  frameborder="5"
 ></iframe>
 
+
+Bivariate Analysis:
+<iframe
+  src="assets/StepsVSsugar.html"
+  width="600"
+  height="400"
+  frameborder="5"
+></iframe>
 
 
 
