@@ -92,7 +92,11 @@ Continuing analyzing the missingness of the `”average_rating”` column, we in
 
 <iframe
   src="assets/calories-ks-permuation.html"
+  width="600"
+  height="400"
+  frameborder="5"
 ></iframe>
+
 
 Because the p-value is less than 0.05, we reject the null hypothesis. The distribution of calories differs significantly depending on whether average_rating is missing. This indicates that the missingness of average_rating depends on calories, suggesting the missingness mechanism is Missing At Random 
 
@@ -109,9 +113,9 @@ Because the p-value is less than 0.05, we reject the null hypothesis. The distri
 
 <iframe
   src="assets/sodium_PDV-ks-permuation.html"
-  width="800"
-  height="600"
-  frameborder="0"
+  width="600"
+  height="400"
+  frameborder="5"
 ></iframe>
 
 **Observed KS statistic:**  0.0225
@@ -119,9 +123,6 @@ Because the p-value is less than 0.05, we reject the null hypothesis. The distri
 
 Because the p-value is 0.12 > 0.05, we fail to reject the null hypothesis. The missingness of ratings does not appear to have a statistically significant relationship with sodium levels in this dataset. This suggests the missingness is MCAR with respect to sodium.
 
----
-
-## parisaaaaaaaaaaaaaaaa
 ---
 
 ## Hypothesis Testing
