@@ -108,7 +108,7 @@ Because the p-value is below our significance level, we reject the null hypothes
 ---
 
 ## Framing a Prediction Problem
-We aim to predict if the recipe was tagged `“healthy”`. This is a ** binary classification ** problem, which would predict ** False ** if there is no “healthy” tag in the tags and ** True **  if `“healthy”` does appear in the tags. We chose our response variable because it is easily interpretable, and doesn’t rely on us naming what is and what isn't healthy, but the perceived healthiness by the recipe makers. 
+We aim to predict if the recipe was tagged `“healthy”`. This is a **binary classification** problem, which would predict **False** if there is no `“healthy”` tag in the tags of the recipe and **True**  if `“healthy”` does appear in the tags. We chose our response variable because it is easily interpretable, and doesn’t rely on us naming what is and what isn't healthy, but the perceived healthiness by the recipe makers. 
 
 To evaluate our model we chose to use the accuracy metric which is the proportion of correct predictions over total predictions. We chose to use this metric because we accounted for imbalance in our model building by using `class_weight = “balanced”`, and it is more straightforward than the other metrics and shows performance. 
 
