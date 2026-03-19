@@ -25,7 +25,13 @@ Data Cleaning:
 
 
 
-Bivariate Analysis:
+Univariate Analysis:
+<iframe
+  src="assets/calories_histogram.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 
