@@ -75,7 +75,12 @@ Bivariate Analysis:
 
 
 ### Interesting Aggregates
-Here we aimed to see what factors differed in the recipes with the healthy tag and without the healthy tag and see how the median of the columns chosen would differ signficantly. For some columns within our dataframe this was true. For example, the median calories for the recipes tagged `healthy` contained 77.6 calories less, or about a quarter, of what recipes not under the tag contained. The tagged recipes also contained a significantly higher amount of saturated_fats, about 1/5 of the amount. Interestingly, the sugar and protein content of the tagged recipes seemed to be the opposite of what we expected, where the median PDV of sugar was higher in the tagged recipes, and the median PDV of protein was lower in the tagged recipes as compared to the untagged recipes. Though, it seems our `"health_indicator"` column does seem to score the `"healthy"` recipes higher. The median `"health_indicator"` score of the tagged recipes being 1.5x higher than the median of the recipes not tagged. 
+Here we aimed to see what factors differed in the recipes with the `”healthy”` tag and without the `”healthy”` tag and see how the median values of several features chosen would differ between the two groups. We observed many differences in several features. For example, the median calories for the recipes tagged `healthy` was 242.2 calories which is  77.6 calories less, or about a quarter, of what recipes not under the tag contained. Similarly, the median saturated_fat_PDV for healthy recipes was 6, compared to 27 for non-healthy recipes which is nearly 5 times more.These results align with the common health and fitness perceptions that lower calorie and lower saturated fat foods are healthier.
+
+However, not all results aligned with expectations. Interestingly, recipes tagged as `"healthy"` had a higher median `”sugar_PDV`” (30 vs. 21) and a lower median protein_PDV (12 vs. 19) compared to those not tagged as `”healthy”`. Instead of reflecting solely healthiness, the `”healthy”` tag might reflect the relative healthiness a recipe has, i.e. the recipe might be a “healthier” alternative to an unhealthy food, so it might still contain a high amount of sugar, but not as much sugar as the “unhealthy” alternative.
+
+Despite these inconsistencies in ideas, the `”health_indicator”` feature we made still aligns well with the labels as recipes tagged as `”healthy”` had a median score of ~0.93 compared to ~0.59 for the recipes not tagged, which is about 1.5x greater. 
+
 
 |                        |   Num of Ingredients |   Min |   calories |   Saturated Fat PDV |   Sugar PDV |   Protein PDV |   Health Indicator |
 |:-----------------------|----------:|----------:|-----------:|--------------------:|------------:|--------------:|-------------------:|
@@ -175,7 +180,35 @@ For our baseline model we are using a **logistic regression model**. We selected
 ---
 
 ## Final Model
+For the final model we included 6 features:
 
+`“protein_PDV”`, `“saturated_fat_PDV”`, `“sugar_PDV”`, `“calories”`
 ---
+
+These are features that describe the nutritional makeup of the recipes, which is fundamentally linked to how healthy food is. Excluding the `”calories”` feature, these are the features we used when making our `"health_indicator"` earlier, to see if there was any correlation with these values and health. As seen in our aggregate table, the features tagged healthy had a median score of ~0.93, while those without the tag had a score of ~0.59, suggesting that these have something to do with whether or not a recipe is tagged healthy. 
+
+We also considered how people perceive what level of which nutrients are healthy or unhealthy. For `“protein_PDV”`, higher protein is commonly associated with fitness and health.
+
+High levels of consumption of saturated fats can raise LDL cholesterol (“bad” cholesterol), increasing risk of heart disease as said by the [American Heart Association](https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats/saturated-fats). So, we chose `“saturated_fat_PDV”` as a feature because lower levels of saturated fats are considered healthier. This aversion to saturated fats is also reflected in our aggregate table, where the median percent daily value of recipes not tagged `”healthy”` was 27, compared to the recipes tagged healthy which had a median of 6. Sugar is another macronutrient that, when not natural and is in high quantities, is associated with unhealthiness, because of this we included `"sugar_PDV"`.
+
+Lower calorie recipes tend to be labeled as healthy. As seen in our aggregate table, this was reflected in our aggregate table where the food tagged `“healthy”` had a median of 242.2 calories while those not tagged had a median of 319.8 calories. 
+
+`”minutes”`
+--- 
+
+This feature measures the time it takes to complete a recipe. 
+
+`"n_ingredients"`
+---
+
+Recipes that take longer to prepare may involve cooking from scratch which is often associated with healthier recipes. The recipes tagged `”healthy”` have a median that is one ingredient less than the number of ingredients recipes not tagged healthy have. 
+
+
+From the perspective of the data generating process, we believe these features improved our models performance because with them we believe that the model can better infer the healthiness criteria recipe authors have for food when creating recipes and putting said recipe under the `”healthy”` tag. Healthiness is ultimately subjective, so the tag is likely influenced by mainstream perceptions of health, which is why we included features such as `”calories”` and `”protein_PDV,”` the former which is deemed healthy in small quantities, and the latter is deemed healthy in larger quantities. We also use features such as `”sugar_PDV”` which may capture another trend where recipes might be tagged as healthy if they are healthier relative to other recipes (such as a relatively healthier version of a dessert).
+
+We preprocessed our data by applying a log transformation to `”minutes”` and `”calories”` because these values are highly right skewed and to make sure the model considers the spread of the data with relatively lower-values (like 200 vs 300 calories compared to 2000 vs 2200 calories). We also applied standard scaling to the nutritional percent daily value features to make sure they were on comparable scales. `”n_ingredients”` was left to pass through the ColumnTransformer since it’s not very skewed. These transformations were included in the`”preprocessor”` step in our pipeline, and for our `“model”` step we added the `max_iter = 1000` parameter to our Logistic Regression instance (which is usually at a default of `max_iter = 100`) to increase the number of iterations the model has to converge.
+
+Our resulting model has a train accuracy of **0.682** and a test accuracy of **0.676**. This is definitely an improvement from our base model that had a test accuracy of about 0.496. Our model is now predicting better than randomly guessing between two categories, and this improvement shows that it is capturing patterns in the data. Since the test and train accuracy are really similar, the model is not overfitting and is generalizing well to unseen data. 
+
 
 ## Fairness Analysis
