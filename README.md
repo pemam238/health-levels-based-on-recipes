@@ -62,7 +62,7 @@ Bivariate Analysis:
 ### Interesting Aggregates
 Here we aimed to see what factors differed in the recipes with the healthy tag and without the healthy tag and see how the median of the columns chosen would differ signficantly. For some columns within our dataframe this was true. For example, the median calories for the recipes tagged `healthy` contained 77.6 calories less, or about a quarter, of what recipes not under the tag contained. The tagged recipes also contained a significantly higher amount of saturated_fats, about 1/5 of the amount. Interestingly, the sugar and protein content of the tagged recipes seemed to be the opposite of what we expected, where the median PDV of sugar was higher in the tagged recipes, and the median PDV of protein was lower in the tagged recipes as compared to the untagged recipes. Though, it seems our `"health_indicator"` column does seem to score the `"healthy"` recipes higher. The median `"health_indicator"` score of the tagged recipes being 1.5x higher than the median of the recipes not tagged. 
 
-|                        |   # Ingredients |   Min |   calories |   Saturated Fat PDV |   Sugar PDV |   Protein PDV |   Health Indicator |
+|                        |   Num of Ingredients |   Min |   calories |   Saturated Fat PDV |   Sugar PDV |   Protein PDV |   Health Indicator |
 |:-----------------------|----------:|----------:|-----------:|--------------------:|------------:|--------------:|-------------------:|
 | tagged "healthy"       |      8    |     30    |     242.2  |                6    |       30    |         12    |           0.928936 |
 | not tagged "healthy"   |      9    |     35    |     319.8  |               27    |       21    |         19    |           0.588704 |
@@ -129,6 +129,14 @@ Because the p-value is 0.12 > 0.05, we fail to reject the null hypothesis. The m
 Our null hypothesis is that recipes with and without the 'healthy' tag have the same average health percentile. The alternative hypothesis is that recipes with the 'healthy' tag have a higher average health percentile than recipes without the tag. To evaluate this, we used the difference in mean health percentiles between two groups as our test statistic, and we set a significance level of .05/ We conducted a permutation test with 10,000 simulations and observed a mean health percentile difference of 0.0569, with a p-value < 0.0001, meaning that none of the simulated permutations produced a difference as large as the one observed in the actual data.
 
 Because the p-value is below our significance level, we reject the null hypothesis. This provides strong statistical evidence suggesting that recipes labeled with the 'healthy' tag tend to have higher health percentile scores on average. We chose to do a permutation test because it does not rely on assumptions about the distribution of the data and directly tests whether the observed difference between the two groups could reasonably occur by chance if the tag were unrelated to healthiness, but this result does not prove that the 'healthy' tag perfectly identifies healthier recipes. It only indicates that there is a statistically significant association between the tag and higher health scores in this dataset
+
+<iframe
+  src="assets/diffOfMeans.html"
+  width="600"
+  height="400"
+  frameborder="0"
+></iframe>
+
 
 
 
