@@ -30,6 +30,7 @@ Readers of this website should care about this question because many people rely
 
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
+
     The dataset was first merged on recipe id. All the 0.0's in the rating column were replaced with NaN so when performing any aggregate functions, such as averages, including 0 would not artificially deflate it. All the ratings for each recipe were averaged so there is only one overall rating per recipe. The date recipes were submitted was converted to timestamps. Nan values found in the 'description' column were replaced with empty strings. Any calorie or minute values less than 0 were removed as well as calorie and minute counts in the top 1% for being unreasonable outliers. The protein, saturated fats, and sugar columns were isolated and turned into z-scores so that the health indicator can later be calculated. Columns separating the nutritional info were also added, such as Calories, Protein PDV, Total Fat PDV, etc. 
 
 | name                                 |   Min |   Calories |   Total Fat PDV | ...   |   Carbs PDV |   Health Indicator |
