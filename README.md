@@ -62,7 +62,7 @@ Bivariate Analysis:
 ### Interesting Aggregates
 Here we aimed to see what factors differed in the recipes with the healthy tag and without the healthy tag and see how the median of the columns chosen would differ signficantly. For some columns within our dataframe this was true. For example, the median calories for the recipes tagged `healthy` contained 77.6 calories less, or about a quarter, of what recipes not under the tag contained. The tagged recipes also contained a significantly higher amount of saturated_fats, about 1/5 of the amount. Interestingly, the sugar and protein content of the tagged recipes seemed to be the opposite of what we expected, where the median PDV of sugar was higher in the tagged recipes, and the median PDV of protein was lower in the tagged recipes as compared to the untagged recipes. Though, it seems our `"health_indicator"` column does seem to score the `"healthy"` recipes higher. The median `"health_indicator"` score of the tagged recipes being 1.5x higher than the median of the recipes not tagged. 
 
-|                        |   n_steps |   minutes |   calories |   saturated_fat_PDV |   sugar_PDV |   protein_PDV |   health_indicator |
+|                        |   # Ingredients |   Min |   calories |   Saturated Fat PDV |   Sugar PDV |   Protein PDV |   Health Indicator |
 |:-----------------------|----------:|----------:|-----------:|--------------------:|------------:|--------------:|-------------------:|
 | tagged "healthy"       |      8    |     30    |     242.2  |                6    |       30    |         12    |           0.928936 |
 | not tagged "healthy"   |      9    |     35    |     319.8  |               27    |       21    |         19    |           0.588704 |
