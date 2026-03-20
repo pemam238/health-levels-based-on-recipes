@@ -3,11 +3,26 @@
 Parisa Emam, Kate Alvarez
 
 ## Introduction
-Our dataset comprised of two datasets merged together, one containing recipes from the cooking website Food.com and another containing user reviews and ratings for those recipes. After merging, the dataset contains 82,093 rows and 24 columns, with each row representing a reviewed recipe entry. This project focuses on the question, can we predict whether a recipe will be labeled with the 'healthy' tag using characteristics of the recipe such as the number of steps, cooking time, and nutritional information? 
+Our dataset comprised of two datasets merged together, one containing recipes from the cooking website Food.com and another containing user reviews and ratings for those recipes. After merging, the dataset contains 82,093 rows and 24 columns, with each row representing a reviewed recipe entry. This project focuses on the question, can we predict whether a recipe will be labeled with the 'healthy' tag using characteristics of the recipe such as the number of ingredients, cooking time, and nutritional information. 
 
-Readers of this website should care about this question because many people rely on online recipes but do not always have the time or knowledge to evaluate the nutritional information. By building a predictive model this project explores whether simple recipe features, such as preparation time, number of steps, or recipe tags, can help predict whether a recipe is tagged as healthy. This model would make it easier for users to quickly identify healthier recipes when browsing cooking website. 
+Readers of this website should care about this question because many people rely on online recipes but do not always have the time or knowledge to evaluate the nutritional information. By building a predictive model this project explores whether simple recipe features, such as preparation time and nutritional content, can help predict whether a recipe is tagged as healthy. This model would make it easier for users to quickly identify healthier recipes when browsing cooking website. 
 
-The columns most relevant to our question include minutes (minutes to prepare the recipe), n_steps (number of steps in recipe), tags (Food.com tags for recipe), nutrition (nutrition information containing calories (number), total fat, sugar, sodium, protein, saturated fat, and carboydrates, measured in percentage of daily value). Using information from the nutrition column, we created a column with a health percentile that uses the equation, standardized protein amount - (standardized saturated fat amount) + (standardized sugar amount). Protein contributes positively to the score because higher protein content is generally associeated with healthier meals, while saturated fat and sugar contribute negatively because higher amounts are typically linked to less healthy nutritional profiles. This column is used to quickly compare the overall healthiness of a recipe. 
+| Column            | Description                                                                                    |
+|:------------------|:-----------------------------------------------------------------------------------------------|
+| Name              | Name of dish (str)                                                                             |
+| minutes           | Average time it takes to prepare (int)                                                         |
+| # of Ingredients  | Number of ingredients (int)                                                                    |
+| Average Rating    | Average rating given by users (float)                                                          |
+| Calories          | Calories in dish (float)                                                                       |
+| Total Fat PDV     | Total fat (% daily value)                                                                      |
+| Sugar PDV         | Sugar (% daily value)                                                                          |
+| Sodium PDV        | Sodium (% daily value)                                                                         |
+| Protein PDV       | Protein (% daily value)                                                                        |
+| Saturated Fat PDV | Saturated fat (% daily value)                                                                  |
+| Carbs PDV         | Carbohydrates (% daily value)                                                                  |
+| Health Indicator  | Health score: z(protein) - z(sugar) - z(sat fat). Simplified verson of the Nutri-Score (float) |
+| healthy_tag       | True if tagged healthy, else False (boolean)                                                   |
+
 
 ---
 
