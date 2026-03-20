@@ -136,7 +136,7 @@ Because the p-value is less than 0.05, we reject the null hypothesis. The distri
 **Observed K-S statistic** ≈ 0.0564
 **P-Value** < .001 < .05 
 
-**__Independency Investigation:__** `average_rating` and `Sodium_PDV`
+__**Independency Investigation:**__ "average_rating" and "sodium_PDV"
 **Null Hypothesis:** The missingness of average_rating **does not depend** on the distribution of the percent daily value of sodium. 
 **Null Hypothesis:** The missingness of average_rating **does** on the distribution of the percent daily value of sodium. 
 
