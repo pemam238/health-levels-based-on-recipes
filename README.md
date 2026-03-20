@@ -116,8 +116,8 @@ The `"average_rating"` column is likely MNAR because the missingness is tied to 
 Continuing analyzing the missingness of the `”average_rating”` column, we investigate if it’s missingness depends on the column `”Sodium_PVD”` which is the percentage of the recommended daily value intake of sodium is in a recipe, and we also investigate the `”Calories”` column which is the number of calories in each recipe. 
 
 ### Dependency Investigation – `average_rating` and `calories`: 
-**Null Hypothesis:** The missingness of average_rating **does not depend** on the distribution of calories. 
-**Alternative Hypothesis:** The missingness of average_rating ** does **on the distribution of calories. 
+**Null Hypothesis:** The missingness of `"average_rating"` **does not depend** on the distribution of calories. 
+**Alternative Hypothesis:** The missingness of `"average_rating"` **does** on the distribution of calories. 
 
 **Test Statistic:** Kolmogorov-Smirnov (K-S) Statistic
 **Significance Level:** .05
