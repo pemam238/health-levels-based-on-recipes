@@ -29,7 +29,7 @@ Readers of this website should care about this question because many people rely
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
-Data Cleaning:
+### Data Cleaning
     The dataset was first merged on recipe id. All the 0.0's in the rating column were replaced with NaN so when performing any aggregate functions, such as averages, including 0 would not artificially deflate it. All the ratings for each recipe were averaged so there is only one overall rating per recipe. The date recipes were submitted was converted to timestamps. Nan values found in the 'description' column were replaced with empty strings. Any calorie or minute values less than 0 were removed as well as calorie and minute counts in the top 1% for being unreasonable outliers. The protein, saturated fats, and sugar columns were isolated and turned into z-scores so that the health indicator can later be calculated. Columns separating the nutritional info were also added, such as Calories, Protein PDV, Total Fat PDV, etc. 
 
 | name                                 |   Min |   Calories |   Total Fat PDV | ...   |   Carbs PDV |   Health Indicator |
@@ -42,9 +42,8 @@ Data Cleaning:
 
 
 
-**Univariate Analysis:**\
-
-We first looked at the distribution of calories in the dishes with a histogram, revealing that the calories are skewed to the right. 
+### Univariate Analysis
+We first looked at the distribution of calories in the dishes with a histogram, revealing that the calories are skewed to the right.  
 
 <iframe
   src="assets/calories_histogram.html"
@@ -64,8 +63,7 @@ We used a boxplot to examine the distribution of health indicator scores, which 
 ></iframe>
 
 
-**Bivariate Analysis:**
-
+### Bivariate Analysis
 This scatter plot compares the number of recipe steps to sugar % daily value. Most recipes cluster under 20 steps and below 1000 sugar PDV, and the overall pattern suggests a weak negative relationship, with higher-step recipes generally having lower sugar values.
 
 <iframe
@@ -100,24 +98,23 @@ Despite these inconsistencies in ideas, the `”health_indicator”` feature we 
 |:-----------------------|----------:|----------:|-----------:|--------------------:|------------:|--------------:|-------------------:|
 | tagged "healthy"       |      8    |     30    |     242.2  |                6    |       30    |         12    |           0.928936 |
 | not tagged "healthy"   |      9    |     35    |     319.8  |               27    |       21    |         19    |           0.588704 |
-| difference             |     -1    |     -5    |     -77.6  |              -21    |        9    |         -7    |           0.340233 |
-|  (tagged - not tagged) |           |           |            |                     |             |               |                    |
+| difference  (tagged - not tagged)   |     -1    |     -5    |     -77.6  |              -21    |        9    |         -7    |           0.340233 |
 | ratio                  |      0.89 |      0.86 |       0.76 |                0.22 |        1.43 |          0.63 |           1.58     |
 
 ---
 
-### Assessment of Missingness
+## Assessment of Missingness
 
 
 
-## MNAR Analysis 
+### MNAR Analysis 
 
 The `"average_rating"` column is likely MNAR because the missingness is tied to the user's satisfaction level, or experience they had with the recipe instructions or food. Users feel more compelled to rate recipes that evoke strongly positive or negative responses. Therefore, more neutral experiences, which would result in more average ratings would not be recorded, which would point to the missingness depending on the value of the missing rating.
 
-## Missing Dependency 
+### Missing Dependency 
 Continuing analyzing the missingness of the `”average_rating”` column, we investigate if it’s missingness depends on the column `”Sodium_PVD”` which is the percentage of the recommended daily value intake of sodium is in a recipe, and we also investigate the `”Calories”` column which is the number of calories in each recipe. 
 
-# Dependency Investigation – `average_rating` and `calories`: 
+### Dependency Investigation – `average_rating` and `calories`: 
 **Null Hypothesis:** The missingness of average_rating **does not depend** on the distribution of calories. 
 **Alternative Hypothesis:** The missingness of average_rating ** does **on the distribution of calories. 
 
@@ -138,7 +135,7 @@ Because the p-value is less than 0.05, we reject the null hypothesis. The distri
 **Observed K-S statistic** ≈ 0.0564
 **P-Value** < .001 < .05 
 
-# Independency Investigation: `average_rating` and `Sodium_PDV`
+**__Independency Investigation:__** `average_rating` and `Sodium_PDV`
 **Null Hypothesis:** The missingness of average_rating **does not depend** on the distribution of the percent daily value of sodium. 
 **Null Hypothesis:** The missingness of average_rating **does** on the distribution of the percent daily value of sodium. 
 
