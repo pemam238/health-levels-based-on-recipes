@@ -3,6 +3,7 @@
 Parisa Emam, Kate Alvarez
 
 ## Introduction
+
 Our dataset comprised of two datasets merged together, one containing recipes from the cooking website Food.com and another containing user reviews and ratings for those recipes. After merging, the dataset contains 82,093 rows and 13 columns, with each row representing a reviewed recipe entry. This project focuses on the question, can we predict whether a recipe will be labeled with the 'healthy' tag using characteristics of the recipe such as the number of ingredients, cooking time, and nutritional information. 
 
 
