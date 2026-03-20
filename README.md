@@ -168,6 +168,7 @@ For our baseline model we are using a **logistic regression model**. We selected
 For the final model we included 6 features:
 
 `“protein_PDV”`, `“saturated_fat_PDV”`, `“sugar_PDV”`, `“calories”`
+---
 
 These are features that describe the nutritional makeup of the recipes, which is fundamentally linked to how healthy food is. Excluding the `”calories”` feature, these are the features we used when making our `"health_indicator"` earlier, to see if there was any correlation with these values and health. As seen in our aggregate table, the features tagged healthy had a median score of ~0.93, while those without the tag had a score of ~0.59, suggesting that these have something to do with whether or not a recipe is tagged healthy. 
 
@@ -177,20 +178,22 @@ High levels of consumption of saturated fats can raise LDL cholesterol (“bad�
 
 Lower calorie recipes tend to be labeled as healthy. As seen in our aggregate table, this was reflected in our aggregate table where the food tagged `“healthy”` had a median of 242.2 calories while those not tagged had a median of 319.8 calories. 
 
-`”minutes”` 
+`”minutes”`
+--- 
 
 This feature measures the time it takes to complete a recipe. 
 
 `"n_ingredients"`
+---
 
 Recipes that take longer to prepare may involve cooking from scratch which is often associated with healthier recipes. The recipes tagged `”healthy”` have a median that is one ingredient less than the number of ingredients recipes not tagged healthy have. 
----
+
 
 From the perspective of the data generating process, we believe these features improved our models performance because with them we believe that the model can better infer the healthiness criteria recipe authors have for food when creating recipes and putting said recipe under the `”healthy”` tag. Healthiness is ultimately subjective, so the tag is likely influenced by mainstream perceptions of health, which is why we included features such as `”calories”` and `”protein_PDV,”` the former which is deemed healthy in small quantities, and the latter is deemed healthy in larger quantities. We also use features such as `”sugar_PDV”` which may capture another trend where recipes might be tagged as healthy if they are healthier relative to other recipes (such as a relatively healthier version of a dessert).
 
 We preprocessed our data by applying a log transformation to `”minutes”` and `”calories”` because these values are highly right skewed and to make sure the model considers the spread of the data with relatively lower-values (like 200 vs 300 calories compared to 2000 vs 2200 calories). We also applied standard scaling to the nutritional percent daily value features to make sure they were on comparable scales. `”n_ingredients”` was left to pass through the ColumnTransformer since it’s not very skewed. These transformations were included in the`”preprocessor”` step in our pipeline, and for our `“model”` step we added the `max_iter = 1000` parameter to our Logistic Regression instance (which is usually at a default of `max_iter = 100`) to increase the number of iterations the model has to converge.
 
 Our resulting model has a train accuracy of **0.682** and a test accuracy of **0.676**. This is definitely an improvement from our base model that had a test accuracy of about 0.496. Our model is now predicting better than randomly guessing between two categories, and this improvement shows that it is capturing patterns in the data. Since the test and train accuracy are really similar, the model is not overfitting and is generalizing well to unseen data. 
----
+
 
 ## Fairness Analysis
