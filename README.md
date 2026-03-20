@@ -9,18 +9,18 @@ Our dataset comprised of two datasets merged together, one containing recipes fr
 
 | Column            | Description                                                                                    |
 |:------------------|:-----------------------------------------------------------------------------------------------|
-| Name              | Name of dish (str)                                                                             |
+| name              | Name of dish (str)                                                                             |
 | minutes           | Average time it takes to prepare (int)                                                         |
-| # of Ingredients  | Number of ingredients (int)                                                                    |
-| Average Rating    | Average rating given by users (float)                                                          |
-| Calories          | Calories in dish (float)                                                                       |
-| Total Fat PDV     | Total fat (% daily value)                                                                      |
-| Sugar PDV         | Sugar (% daily value)                                                                          |
-| Sodium PDV        | Sodium (% daily value)                                                                         |
-| Protein PDV       | Protein (% daily value)                                                                        |
-| Saturated Fat PDV | Saturated fat (% daily value)                                                                  |
-| Carbs PDV         | Carbohydrates (% daily value)                                                                  |
-| Health Indicator  | Health score: z(protein) - z(sugar) - z(sat fat). Simplified verson of the Nutri-Score (float) |
+| n_ngredients  | Number of ingredients (int)                                                                    |
+| average_rating    | Average rating given by users (float)                                                          |
+| calories          | Calories in dish (float)                                                                       |
+| total_fat_PDV     | Total fat (% daily value)                                                                      |
+| sugar_PDV         | Sugar (% daily value)                                                                          |
+| sodium_PDV        | Sodium (% daily value)                                                                         |
+| protein_PDV       | Protein (% daily value)                                                                        |
+| saturated_fat_PDV | Saturated fat (% daily value)                                                                  |
+| carbs_PDV         | Carbohydrates (% daily value)                                                                  |
+| health_indicator  | Health score: z(protein) - z(sugar) - z(sat fat). Simplified verson of the Nutri-Score (float) |
 | healthy_tag       | True if tagged healthy, else False (boolean)                                                   |
 
 
