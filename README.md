@@ -85,7 +85,7 @@ This scatter plot shows the relationship between the health indicator and satura
 ></iframe>
 
 
-
+---
 
 ### Interesting Aggregates
 Here we aimed to see what factors differed in the recipes with the `”healthy”` tag and without the `”healthy”` tag and see how the median values of several features chosen would differ between the two groups. We observed many differences in several features. For example, the median calories for the recipes tagged `healthy` was 242.2 calories which is  77.6 calories less, or about a quarter, of what recipes not under the tag contained. Similarly, the median saturated_fat_PDV for healthy recipes was 6, compared to 27 for non-healthy recipes which is nearly 5 times more.These results align with the common health and fitness perceptions that lower calorie and lower saturated fat foods are healthier.
@@ -222,5 +222,14 @@ We preprocessed our data by applying a log transformation to `”minutes”` and
 
 Our resulting model has a train accuracy of **0.682** and a test accuracy of **0.676**. This is definitely an improvement from our base model that had a test accuracy of about 0.496. Our model is now predicting better than randomly guessing between two categories, and this improvement shows that it is capturing patterns in the data. Since the test and train accuracy are really similar, the model is not overfitting and is generalizing well to unseen data. 
 
+---
 
 ## Fairness Analysis
+
+For our fairness model we decided to see if our model performs worse on high calorie recipes versus low calorie recipes. We defined high calories recipes as recipes with calories above the median which is 301.9 calories and low calorie recipes as recipes less than or equal to the median. We chose our evaluation metric to be precision because our model is a classification model and our goal is to see how accurately our final model can identify recipes as tagged `”healthy”`. 
+
+**Null Hypothesis**:  Our model is fair. Its precision for high calorie and low calorie recipes are roughly the same, and any differences are due to random chance. 
+
+**Alternative Hypothesis**:  The model is unfair. Its precision for high calorie recipes is lower than its precision for low calorie recipes
+
+For the test statistic we measured the difference in precision between the high calorie group and the low calorie group. Our observed statistic was 0.0301 which is pretty small. We then performed a permutation test with a significance level of α = 0.05. We got a resulting p-value of 0.996 which is significantly greater than our 0.05 significance level, therefore we fail to reject the null hypothesis. There is insufficient evidence to conclude that our final model performs worse on high calorie recipes. 
