@@ -11,7 +11,7 @@ Our dataset comprised of two datasets merged together, one containing recipes fr
 |:------------------|:-----------------------------------------------------------------------------------------------|
 | name              | Name of dish (str)                                                                             |
 | minutes           | Average time it takes to prepare (int)                                                         |
-| n_ngredients  | Number of ingredients (int)                                                                    |
+| n_ingredients  | Number of ingredients (int)                                                                    |
 | average_rating    | Average rating given by users (float)                                                          |
 | calories          | Calories in dish (float)                                                                       |
 | total_fat_PDV     | Total fat (% daily value)                                                                      |
