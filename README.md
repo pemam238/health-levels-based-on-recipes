@@ -3,9 +3,8 @@
 Parisa Emam, Kate Alvarez
 
 ## Introduction
-Our dataset comprised of two datasets merged together, one containing recipes from the cooking website Food.com and another containing user reviews and ratings for those recipes. After merging, the dataset contains 82,093 rows and 24 columns, with each row representing a reviewed recipe entry. This project focuses on the question, can we predict whether a recipe will be labeled with the 'healthy' tag using characteristics of the recipe such as the number of ingredients, cooking time, and nutritional information. 
+Our dataset comprised of two datasets merged together, one containing recipes from the cooking website Food.com and another containing user reviews and ratings for those recipes. After merging, the dataset contains 82,093 rows and 13 columns, with each row representing a reviewed recipe entry. This project focuses on the question, can we predict whether a recipe will be labeled with the 'healthy' tag using characteristics of the recipe such as the number of ingredients, cooking time, and nutritional information. 
 
-Readers of this website should care about this question because many people rely on online recipes but do not always have the time or knowledge to evaluate the nutritional information. By building a predictive model this project explores whether simple recipe features, such as preparation time and nutritional content, can help predict whether a recipe is tagged as healthy. This model would make it easier for users to quickly identify healthier recipes when browsing cooking website. 
 
 | Column            | Description                                                                                    |
 |:------------------|:-----------------------------------------------------------------------------------------------|
@@ -24,13 +23,16 @@ Readers of this website should care about this question because many people rely
 | healthy_tag       | True if tagged healthy, else False (boolean)                                                   |
 
 
+Readers of this website should care about this question because many people rely on online recipes but do not always have the time or knowledge to evaluate the nutritional information. By building a predictive model this project explores whether simple recipe features, such as preparation time and nutritional content, can help predict whether a recipe is tagged as healthy. This model would make it easier for users to quickly identify healthier recipes when browsing cooking website. 
+
+
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
 Data Cleaning:
-    The dataset was first merged on recipe id. All the 0.0's in the rating column were replaced with NaN so that when performing any aggregate functions, such as averages, including 0 would artificially deflate it. All the ratings per recipe were averaged so there is only one overall rating per recipe. The date recipes were submitted was converted to timestamps. Nan values found in the 'description' column were replaced with empty strings. Any calorie or minute values less than 0 were removed as well as calorie and minute counts in the top 1% for being unreasonable outliers. The protein, saturated fats, and sugar columns were isolated and turned into z-scores so that the health percentile can later be calculated. 
+    The dataset was first merged on recipe id. All the 0.0's in the rating column were replaced with NaN so when performing any aggregate functions, such as averages, including 0 would not artificially deflate it. All the ratings for each recipe were averaged so there is only one overall rating per recipe. The date recipes were submitted was converted to timestamps. Nan values found in the 'description' column were replaced with empty strings. Any calorie or minute values less than 0 were removed as well as calorie and minute counts in the top 1% for being unreasonable outliers. The protein, saturated fats, and sugar columns were isolated and turned into z-scores so that the health indicator can later be calculated. Columns separating the nutritional info were also added, such as Calories, Protein PDV, Total Fat PDV, etc. 
 
-| name                                 |   min |   calories |   Total Fat PDV | ...   |   Carbs PDV |   Health Indicator |
+| name                                 |   Min |   Calories |   Total Fat PDV | ...   |   Carbs PDV |   Health Indicator |
 |:-------------------------------------|----------:|-----------:|----------------:|:------|------------:|-------------------:|
 | Brownies  |        40 |      138.4 |              10 | ...   |           6 |         -0.383  |
 | Chocolate Chip Cookies   |        45 |      595.1 |              46 | ...   |          26 |         -2.249   |
@@ -40,13 +42,19 @@ Data Cleaning:
 
 
 
-Univariate Analysis:
+**Univariate Analysis:**\
+
+We first looked at the distribution of calories in the dishes with a histogram, revealing that the calories are skewed to the right. 
+
 <iframe
   src="assets/calories_histogram.html"
   width="600"
   height="400"
   frameborder="0"
 ></iframe>
+
+
+We used a boxplot to examine the distribution of health indicator scores, which showed most values clustered between −2 and 2 with several outliers. Because of these extremes, the plot was zoomed in to clearly display the central distribution.
 
 <iframe
   src="assets/health_boxplot.html"
@@ -56,13 +64,19 @@ Univariate Analysis:
 ></iframe>
 
 
-Bivariate Analysis:
+**Bivariate Analysis:**
+
+This scatter plot compares the number of recipe steps to sugar % daily value. Most recipes cluster under 20 steps and below 1000 sugar PDV, and the overall pattern suggests a weak negative relationship, with higher-step recipes generally having lower sugar values.
+
 <iframe
   src="assets/StepsVSsugar.html"
   width="600"
   height="400"
   frameborder="0"
 ></iframe>
+
+
+This scatter plot shows the relationship between the health indicator and saturated fat % daily value. The plot reveals a clear negative relationship, where higher health indicator scores are associated with lower saturated fat levels, while less healthy recipes (lower scores) tend to have higher saturated fat.
 
 <iframe
   src="assets/StepsVSsatfat.html"
